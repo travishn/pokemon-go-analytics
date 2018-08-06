@@ -7,6 +7,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const PORT = process.env.PORT || 5000;
+const connectionStr = process.env.DATABASE_URL || 'postgres://localhost:5432/pogo_analytics';
+const client = new pg.Client(connectionStr);
 
 app.get('/', (req, res) => {
   res.send({ express: 'Hello from Express!' });
