@@ -49,8 +49,8 @@ app.get('/pokemon/:pokemonId', async (req, res) => {
 });
 
 app.get('/pokemon/generation/:generationId', async (req, res) => {
-  const gen = req.params.generationId;
   try {
+    const gen = req.params.generationId;
     const response = await pool.query(`SELECT * FROM pokemon WHERE pokemon.generation = ${gen}`);
     res.send(response.rows);
   } catch (err) {
@@ -60,12 +60,13 @@ app.get('/pokemon/generation/:generationId', async (req, res) => {
 });
 
 app.get('/pokemon/type/:element', async (req, res) => {
-  const type = req.params.element;
   try {
+    const type = req.params.element;
     const response = await pool.query(
       `SELECT * 
       FROM pokemon 
-      WHERE pokemon.type1 = ${type}`
+      WHERE pokemon.type1 = '${type}'
+      OR pokemon.type2 = '${type}'`
     );
     res.send(response.rows);
   } catch (err) {
