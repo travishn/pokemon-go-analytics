@@ -8,8 +8,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const PORT = process.env.PORT || 5000;
-// const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/pogo_analytics';
-// const client = new pg.Client(connectionString);
 const config = {
   host: process.env.HOST,
   port: process.env.DBPORT,
