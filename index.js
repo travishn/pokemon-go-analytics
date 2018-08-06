@@ -28,31 +28,50 @@ app.get('/', (req, res) => {
 });
 
 app.get('/pokemon', async (req, res) => {
-  const response = await pool.query('SELECT * FROM pokemon');
-  res.send(response.rows);
+  try {
+    const response = await pool.query('SELECT * FROM pokemon');
+    res.send(response.rows);
+  } catch (err) {
+    console.log(err);
+    res.send({ error: 'Incorrect route. Please try again.' });
+  }
 });
 
 app.get('/pokemon/:pokemonId', async (req, res) => {
-  const pokeId = req.params.pokemonId;
-  const response = await pool.query(`SELECT * FROM pokemon WHERE pokemon.id = ${pokeId}`);
-  res.send(response.rows);
+  try {
+    const pokeId = req.params.pokemonId;
+    const response = await pool.query(`SELECT * FROM pokemon WHERE pokemon.id = ${pokeId}`);
+    res.send(response.rows[0]);
+  } catch (err) {
+    console.log(err);
+    res.send({ error: 'Incorrect route. Please try again.' });
+  }
 });
 
 app.get('/pokemon/generation/:generationId', async (req, res) => {
   const gen = req.params.generationId;
-  const response = await pool.query(`SELECT * FROM pokemon WHERE pokemon.generation = ${gen}`);
-  res.send(response.rows);
+  try {
+    const response = await pool.query(`SELECT * FROM pokemon WHERE pokemon.generation = ${gen}`);
+    res.send(response.rows);
+  } catch (err) {
+    console.log(err);
+    res.send({ error: 'Incorrect route. Please try again.' });
+  }
 });
 
-app.get('/pokemon/type/:typeElement', async (req, res) => {
-  const type = req.params.typeElement;
-  const response = await pool.query(
-    `SELECT * 
-    FROM pokemon 
-    WHERE pokemon.type1 = ${type}
-    OR pokemon.type2 = ${type}`
-  );
-  res.send(response.rows);
+app.get('/pokemon/type/:element', async (req, res) => {
+  const type = req.params.element;
+  try {
+    const response = await pool.query(
+      `SELECT * 
+      FROM pokemon 
+      WHERE pokemon.type1 = ${type}`
+    );
+    res.send(response.rows);
+  } catch (err) {
+    console.log(err);
+    res.send({ error: 'Incorrect route. Please try again.' });
+  }
 });
 
 app.listen(PORT, () => {
