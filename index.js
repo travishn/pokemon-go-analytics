@@ -26,6 +26,7 @@ app.get('/', (req, res) => {
     allPokemon: '/pokemon',
     pokemonById: '/pokemon/:pokemonId',
     pokemonByGen: './pokemon/generation/:generationId',
+    pokemonByType: './pokemon/type/:element',
   });
 });
 
