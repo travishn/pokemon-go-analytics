@@ -11,8 +11,10 @@ app.use(cors());
 
 const PORT = process.env.PORT || 5000;
 const config = {
+  user: process.env.DB_USER,
+  password: process.env.DB_PWD,
   host: process.env.HOST,
-  port: process.env.DBPORT,
+  port: process.env.DB_PORT,
   database: process.env.DB,
 };
 
