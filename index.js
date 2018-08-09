@@ -23,7 +23,7 @@ const pool = new pg.Pool(config);
 
 app.get('/', (req, res) => {
   res.send({
-    express: 'Hello from Express!',
+    routes: 'Below are the API routes!',
     allPokemon: '/pokemon',
     pokemonById: '/pokemon/:pokemonId',
     pokemonByGen: './pokemon/generation/:generationId',
@@ -36,7 +36,6 @@ app.get('/pokemon', async (req, res) => {
     const response = await pool.query('SELECT * FROM pokemon');
     res.send(response.rows);
   } catch (err) {
-    console.log(err);
     res.send({ error: 'Incorrect route. Please try again.' });
   }
 });
@@ -47,7 +46,6 @@ app.get('/pokemon/:pokemonId', async (req, res) => {
     const response = await pool.query(`SELECT * FROM pokemon WHERE pokemon.id = ${pokeId}`);
     res.send(response.rows[0]);
   } catch (err) {
-    console.log(err);
     res.send({ error: 'Incorrect route. Please try again.' });
   }
 });
@@ -58,7 +56,6 @@ app.get('/pokemon/generation/:generationId', async (req, res) => {
     const response = await pool.query(`SELECT * FROM pokemon WHERE pokemon.generation = ${gen}`);
     res.send(response.rows);
   } catch (err) {
-    console.log(err);
     res.send({ error: 'Incorrect route. Please try again.' });
   }
 });
@@ -74,7 +71,6 @@ app.get('/pokemon/type/:element', async (req, res) => {
     );
     res.send(response.rows);
   } catch (err) {
-    console.log(err);
     res.send({ error: 'Incorrect route. Please try again.' });
   }
 });
