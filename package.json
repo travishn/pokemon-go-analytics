@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
-    "frontend": "cd frontend && npm start",
-    "dev": "concurrently --kill-others-on-fail 'npm run start' 'npm run frontend'"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
@@ -25,7 +23,6 @@
     "eslint-config-airbnb": "^17.0.0",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-react": "^7.10.0",
-    "concurrently": "*"
+    "eslint-plugin-react": "^7.10.0"
   }
 }
