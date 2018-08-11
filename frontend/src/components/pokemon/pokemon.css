@@ -11,6 +11,9 @@
   justify-content: center;
 }
 
+.name-container {
+}
+
 .poke-stats {
   display: flex;
 }
@@ -40,6 +43,7 @@
 
 .poke-stats>div:nth-child(2) {
   flex: 50 1;
+  justify-content: left;
   min-width: 250px;
   border-right: 1px solid teal;
   border-bottom: 1px solid teal;
@@ -124,6 +128,10 @@
   border-collapse: collapse;
   margin-bottom: 20px;
   text-align: center;
+}
+
+.type-container {
+  display: flex;
 }
 
 /* .pokemon-container {
